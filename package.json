@@ -1,0 +1,23 @@
+{
+  "name": "request-header-parser-rl",
+  "version": "1.0.0",
+  "description": "TimeStamp Microservice",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/request-header-parser-rl"
+  },
+  "keywords": [
+    "Free",
+    "Code",
+    "Camp"
+  ],
+  "author": "Roman Lorent",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
