@@ -1,83 +1,34 @@
 var express = require('express');
 var app = express();
 var path = require("path");
+var accepts = require('accepts');
+var useragent = require('useragent');
 
 app.set('port', (process.env.PORT || 5000));
 
-app.get("/", function (req, res) {
+//app.get("/", function (req, res) {
+//
+//
+//    res.sendFile(path.join(__dirname + '/index.html'));
+//
+//
+//});
 
 
-    res.sendFile(path.join(__dirname + '/index.html'));
+app.get('/', function (req, res) {
 
-
-});
-
-
-app.get('/:data', function (req, res) {
-
-    var d = req.params.data
-
-    var dataObject = new Date(d);
-
-    var unix = Date.parse(d);
-
-    var month = "";
+    var accept = accepts(req);
+    var agent = useragent.parse(req.headers['user-agent']);
+    //res.send(req.acceptsLanguages());
+    var language = accept.language()[0];
+    var operatingSys = agent.os.family;
+    var ip = req.ip
     
-    switch (dataObject.getMonth()) {
-    case 0:
-        month = "January";
-        break;
-    case 1:
-        month = "February";
-        break;
-    case 2:
-        month = "March";
-        break;
-    case 3:
-        month = "April";
-        break;
-    case 4:
-        month = "May";
-        break;
-    case 5:
-        month = "June";
-        break;
-    case 6:
-        month = "July";
-        break;
-    case 7:
-        month = "August";
-        break;
-    case 8:
-        month = "September";
-        break;
-    case 9:
-        month = "October";
-        break;
-    case 10:
-        month = "November";
-        break;
-    case 11:
-        month = "December";
-        break;
-    }
-
-    var day = dataObject.getDate();
-    var year = dataObject.getFullYear();
-
-    var natural = month + " " + day + ", " + year;
-
-    if (dataObject == "Invalid Date") {
-        res.json({
-            unix: "null",
-            natural: "null"
-        });
-    }
-
-    res.json({
-        unix: unix,
-        natural: natural
-    });
+    
+res.json({ipaddress: ip, language: language, software: operatingSys }); 
+    
+    
+   
 });
 
 

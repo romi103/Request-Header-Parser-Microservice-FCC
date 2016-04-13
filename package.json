@@ -18,6 +18,8 @@
   "author": "Roman Lorent",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4"
+    "accepts": "^1.3.2",
+    "express": "^4.13.4",
+    "useragent": "^2.1.9"
   }
 }
